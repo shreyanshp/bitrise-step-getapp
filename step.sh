@@ -22,5 +22,5 @@ echo $artifactslug
 lasturl=$(curl -H "accept: application/json" -H "Authorization: ${access_token}" -X GET https://api.bitrise.io/v0.1/apps/${app_slug}/builds/$buildslug/artifacts/$artifactslug | jq -r '.[] | .expiring_download_url')
 
 (mkdir -p $BITRISE_SOURCE_DIR/${directory_name} && cd $BITRISE_SOURCE_DIR/${directory_name}
-curl $lasturl > ${artifact_name}
+curl $lasturl > "${artifact_name}"
 )
